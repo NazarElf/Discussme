@@ -19,6 +19,7 @@ namespace Discussme.BLL.DbObjects
         public string Description { get; set; }
         [DataMember]
         public DateTime CreationTime { get; set; }
+
         [DataMember]
         public int CreatorId { get; set; } //Can be wrong
         [DataMember]
