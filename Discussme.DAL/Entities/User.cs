@@ -23,7 +23,7 @@ namespace Discussme.DAL.Entities
         public DateTime RegistrationTime { get; set; }
         public DateTime LastSeenTime { get; set; }
 
-        public ICollection<Topic> Topics { get; set; }
-        public ICollection<Comment> Comments { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
+        public virtual ICollection<Comment> Comments { get; set; }
     }
 }

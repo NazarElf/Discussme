@@ -12,6 +12,6 @@ namespace Discussme.DAL.Entities
         public string Title { get; set; }
         public string Description { get; set; }
 
-        ICollection<Topic> Topics { get; set; }
+        public virtual ICollection<Topic> Topics { get; set; }
     }
 }

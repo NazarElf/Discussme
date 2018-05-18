@@ -11,8 +11,11 @@ namespace Discussme.DAL.Entities
         public int Id { get; set; }
         public string Description { get; set; }
         public DateTime CreationTime { get; set; }
-
+        
+        public int CreatorId { get; set; }
         public User Creator { get; set; }
+
+        public int TopicId { get; set; }
         public Topic ParrentTopic { get; set; }
     }
 }
