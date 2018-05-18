@@ -47,16 +47,25 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbClasses\CommentsRepository.cs" />
+    <Compile Include="DbClasses\SectionsRepository.cs" />
+    <Compile Include="DbClasses\TopicsRepository.cs" />
+    <Compile Include="DbClasses\UnitOfWork.cs" />
+    <Compile Include="DbClasses\UsersRepository.cs" />
+    <Compile Include="DbContextes\MainContext.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Interfaces\IRepository.cs" />
+    <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
