@@ -3,7 +3,7 @@ using Discussme.DAL.Entities;
 
 namespace Discussme.DAL.DbContextes
 {
-    class MainContext : DbContext
+    public class MainContext : DbContext
     {
 
         public MainContext(string connectionString) : base(connectionString) { }

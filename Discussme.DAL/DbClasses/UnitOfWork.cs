@@ -5,16 +5,16 @@ using Discussme.DAL.DbContextes;
 
 namespace Discussme.DAL.DbClasses
 {
-    class UnitOfWork : IUnitOfWork
+    public class UnitOfWork : IUnitOfWork
     {
-        private MainContext db;
+        private DbContextes.MainContext db;
         private CommentsRepository commentsRepository;
         private SectionsRepository sectionsRepository;
         private TopicsRepository topicsRepository;
         private UsersRepository usersRepository;
 
         public UnitOfWork(string connectionString) =>
-            db = new MainContext(connectionString);
+            db = new DbContextes.MainContext(connectionString);
 
         public IRepository<Comment> Comments
         {

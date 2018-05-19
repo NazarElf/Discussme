@@ -7,6 +7,6 @@ namespace Discussme.BLL.ServiceInterfaces
     interface IForumDataService
     {
         [OperationContract]
-        void AddTopic();
+        void AddSection(int id, string title, string description);
     }
 }

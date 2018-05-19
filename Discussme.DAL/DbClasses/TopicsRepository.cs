@@ -8,11 +8,11 @@ using Discussme.DAL.DbContextes;
 
 namespace Discussme.DAL.DbClasses
 {
-    class TopicsRepository : IRepository<Topic>
+    public class TopicsRepository : IRepository<Topic>
     {
-        MainContext db;
+        DbContextes.MainContext db;
 
-        public TopicsRepository(MainContext db) => this.db = db;
+        public TopicsRepository(DbContextes.MainContext db) => this.db = db;
 
         public void Create(Topic item) => db.Topics.Add(item);
 
