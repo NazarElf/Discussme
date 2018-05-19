@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Discussme.DAL.Entities
 {
@@ -11,6 +12,9 @@ namespace Discussme.DAL.Entities
         //Description of section (Header)
         public string Description { get; set; }
 
+        // ForeignKey used to create foreign key column "SectionId"
+        // in Topics table in the database
+        [ForeignKey("SectionId")]
         //Collection of topics that located in this section
         public virtual ICollection<Topic> Topics { get; set; }
     }
