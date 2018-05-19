@@ -14,17 +14,19 @@ namespace Discussme.DAL.Entities
         public string Description { get; set; }
         //Time of creation of topic (will be sorted by this field)
         public DateTime CreationTime { get; set; }
-
-        // ForeignKey used to create foreign key column "TopicId"
-        // in Comments table in the database
-        [ForeignKey("TopicId")]
+        
         //List of comment to topic
         ICollection<Comment> Comments { get; set; }
 
-        public int CreatorId { get; set; }
+        public int? CreatorId { get; set; }
         public User Creator { get; set; }
 
         public int SectionId { get; set; }
         public Section ParentSection { get; set; }
+
+        public Topic()
+        {
+            Comments = new List<Comment>();
+        }
     }
 }

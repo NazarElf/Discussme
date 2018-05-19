@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using Discussme.BLL.ServiceInterfaces;
 using Discussme.BLL.DbObjects;
 using AutoMapper;
+using Discussme.DAL.Entities;
 
 namespace Discussme.BLL.ServiceClasses
 {
@@ -16,22 +17,19 @@ namespace Discussme.BLL.ServiceClasses
 
         public ForumDataService()
         {
-            db = new Discussme.DAL.DbClasses.UnitOfWork(@"source=(localdb)\MSSQLLocalDB;Initial Catalog=userstore.mdf;Integrated Security=True;");
+            db = new Discussme.DAL.DbClasses.UnitOfWork();
         }
 
         public void AddSection(int id, string title, string description)
         {
-            //SectionB section = new SectionB();
-            //section.Id = id;
-            //section.Title = title;
-            //section.Description = description;
-            //Mapper.Initialize(cfg => cfg.CreateMap<SectionB, Discussme.DAL.Entities.Section>());
-            Discussme.DAL.Entities.Section sect = new DAL.Entities.Section();
-            sect.Id = id;
-            sect.Title = title;
-            sect.Description = description;
-            db.Comments.ReadList();
+            db.Sections.DeleteById(id);
             db.Save();
+            //db.Sections.Create(null);
+        }
+
+        public IEnumerable<Section> GetSections()
+        {
+            return db.Sections.ReadList();
         }
     }
 }

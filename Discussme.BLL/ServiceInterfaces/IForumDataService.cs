@@ -1,4 +1,5 @@
 ﻿using System.ServiceModel;
+using System.Collections.Generic;
 
 namespace Discussme.BLL.ServiceInterfaces
 {
@@ -8,5 +9,8 @@ namespace Discussme.BLL.ServiceInterfaces
     {
         [OperationContract]
         void AddSection(int id, string title, string description);
+
+        [OperationContract]
+        IEnumerable<Discussme.DAL.Entities.Section> GetSections();
     }
 }

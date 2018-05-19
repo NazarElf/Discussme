@@ -33,15 +33,15 @@ namespace Discussme.DAL.Entities
         public DateTime RegistrationTime { get; set; }
         //Time when user was last seen (will uses to identify online of user)
         public DateTime LastSeenTime { get; set; }
-
-        // ForeignKey used to create foreign key column "CreatorId"
-        // in Topics table in the database
-        [ForeignKey("CreatorId")]
+        
         public virtual ICollection<Topic> Topics { get; set; }
-
-        // ForeignKey used to create foreign key column "CreatorId"
-        // in Comments table in the database
-        [ForeignKey("CreatorId")]
+        
         public virtual ICollection<Comment> Comments { get; set; }
+
+        public User()
+        {
+            Topics = new List<Topic>();
+            Comments = new List<Comment>();
+        }
     }
 }

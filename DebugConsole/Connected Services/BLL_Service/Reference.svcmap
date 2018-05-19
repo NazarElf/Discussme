@@ -25,6 +25,8 @@
     <MetadataFile FileName="service.wsdl" MetadataType="Wsdl" ID="9d562bd4-b2ed-440b-aef9-a0f5e2f0308c" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Discussme.BLL/ForumDataService/mex" />
     <MetadataFile FileName="service.xsd" MetadataType="Schema" ID="092c00d5-b0d9-4cb6-aed0-f8314b52abd0" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Discussme.BLL/ForumDataService/mex" />
     <MetadataFile FileName="service1.xsd" MetadataType="Schema" ID="00e4096a-d43d-479d-8bfe-f5563d44f258" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Discussme.BLL/ForumDataService/mex" />
+    <MetadataFile FileName="Discussme.DAL.Entities.xsd" MetadataType="Schema" ID="3390a26b-bf02-4fb0-a217-aec6771bfd1a" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Discussme.BLL/ForumDataService/mex" />
+    <MetadataFile FileName="Discussme.DAL.Enums.xsd" MetadataType="Schema" ID="4d209cae-3070-4cef-bebf-332f8fb5de5e" SourceId="1" SourceUrl="http://localhost:8733/Design_Time_Addresses/Discussme.BLL/ForumDataService/mex" />
   </Metadata>
   <Extensions>
     <ExtensionFile FileName="configuration91.svcinfo" Name="configuration91.svcinfo" />

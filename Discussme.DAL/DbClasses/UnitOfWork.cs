@@ -16,6 +16,9 @@ namespace Discussme.DAL.DbClasses
         public UnitOfWork(string connectionString) =>
             db = new DbContextes.MainContext(connectionString);
 
+        public UnitOfWork() => 
+            db = new DbContextes.MainContext();
+
         public IRepository<Comment> Comments
         {
             get

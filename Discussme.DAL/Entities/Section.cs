@@ -11,11 +11,13 @@ namespace Discussme.DAL.Entities
         public string Title { get; set; }
         //Description of section (Header)
         public string Description { get; set; }
-
-        // ForeignKey used to create foreign key column "SectionId"
-        // in Topics table in the database
-        [ForeignKey("SectionId")]
+        
         //Collection of topics that located in this section
-        public virtual ICollection<Topic> Topics { get; set; }
+        public  ICollection<Topic> Topics { get; set; }
+
+        public Section()
+        {
+            Topics = new List<Topic>();
+        }
     }
 }

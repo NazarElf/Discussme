@@ -4,6 +4,8 @@
     <xsd:schema targetNamespace="http://tempuri.org/Imports">
       <xsd:import namespace="http://tempuri.org/" />
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Enums" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IForumDataService_AddSection_InputMessage">
@@ -12,16 +14,35 @@
   <wsdl:message name="IForumDataService_AddSection_OutputMessage">
     <wsdl:part name="parameters" element="tns:AddSectionResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumDataService_GetSections_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSections" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetSections_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionsResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumDataService">
     <wsdl:operation name="AddSection">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/AddSection" message="tns:IForumDataService_AddSection_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/AddSectionResponse" message="tns:IForumDataService_AddSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSections">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/GetSections" message="tns:IForumDataService_GetSections_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/GetSectionsResponse" message="tns:IForumDataService_GetSections_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumDataService" type="tns:IForumDataService">
     <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
     <wsdl:operation name="AddSection">
       <soap:operation soapAction="http://tempuri.org/IForumDataService/AddSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSections">
+      <soap:operation soapAction="http://tempuri.org/IForumDataService/GetSections" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
