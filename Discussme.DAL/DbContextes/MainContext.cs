@@ -1,10 +1,11 @@
 ﻿using System.Data.Entity;
 using Discussme.DAL.Entities;
 using System;
+using Microsoft.AspNet.Identity.EntityFramework;
 
 namespace Discussme.DAL.DbContextes
 {
-    public class MainContext : DbContext
+    public class MainContext : IdentityDbContext<IdentityForumUser>
     {
 
         public MainContext(string connectionString) : base(connectionString) { }

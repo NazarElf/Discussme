@@ -9,7 +9,9 @@ namespace Discussme.DAL.Entities
     public class User
     {
         //Uniq identificator of user
-        public int Id { get; set; }
+        [Key]
+        [ForeignKey("IdentityForumUser")]
+        public string Id { get; set; }
 
         //User's nickname
         [Required]
@@ -42,7 +44,7 @@ namespace Discussme.DAL.Entities
         public bool IsBanned { get; set; }
 
         //User's role
-        public Role UserRole { get; set; }
+        //public MyRoles UserRole { get; set; }
 
         //User's Privacy
         public Privacy UserPrivacy { get; set; }
@@ -53,6 +55,7 @@ namespace Discussme.DAL.Entities
         //Time when user was last seen (will uses to identify online of user)
         public DateTime LastSeenTime { get; set; }
 
+        public virtual IdentityForumUser IdentityForumUser { get; set; }
         
         public virtual ICollection<Topic> Topics { get; set; }
         

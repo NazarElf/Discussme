@@ -12,8 +12,12 @@ namespace ProgramDebugConsole
         {
             using (BLL_Service.ForumServiceClient fdsc = new BLL_Service.ForumServiceClient())
             {
-                fdsc.GetTopicsInSection(2);
+                var res = fdsc.GetTopicsInSection(2);
 
+                foreach (var item in res)
+                {
+                    Console.WriteLine(item.Title);
+                }
             }
             Console.WriteLine("Connection ended, it seems that everything ok");
             Console.ReadLine();

@@ -1,6 +1,6 @@
 ﻿namespace Discussme.DAL.Enums
 {
-    public enum Role
+    public enum MyRoles
     {
         User, Admin, 
     }

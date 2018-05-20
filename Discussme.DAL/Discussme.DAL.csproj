@@ -39,6 +39,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
@@ -52,6 +58,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DbClasses\ClientManager.cs" />
     <Compile Include="DbClasses\CommentsRepository.cs" />
     <Compile Include="DbClasses\SectionsRepository.cs" />
     <Compile Include="DbClasses\TopicsRepository.cs" />
@@ -59,10 +66,15 @@
     <Compile Include="DbClasses\UsersRepository.cs" />
     <Compile Include="DbContextes\MainContext.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\ForumRole.cs" />
+    <Compile Include="Entities\IdentityForumUser.cs" />
     <Compile Include="Entities\Section.cs" />
     <Compile Include="Entities\Topic.cs" />
     <Compile Include="Entities\User.cs" />
     <Compile Include="Enums\Enums.cs" />
+    <Compile Include="Identity\ForumRoleManager.cs" />
+    <Compile Include="Identity\IdentityForumUserManager.cs" />
+    <Compile Include="Interfaces\IClientManager.cs" />
     <Compile Include="Interfaces\IRepository.cs" />
     <Compile Include="Interfaces\IUnitOfWork.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
