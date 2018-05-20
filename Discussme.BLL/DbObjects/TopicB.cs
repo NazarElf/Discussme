@@ -21,7 +21,7 @@ namespace Discussme.BLL.DbObjects
         public DateTime CreationTime { get; set; }
 
         [DataMember]
-        public int CreatorId { get; set; } //Can be wrong
+        public int? CreatorId { get; set; } //Can be wrong
         [DataMember]
         public int SectionId { get; set; } //Can be wrong
     }

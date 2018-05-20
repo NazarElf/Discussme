@@ -698,6 +698,208 @@ namespace ProgramDebugConsole.BLL_Service {
         Admin = 1,
     }
     
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="TopicB", Namespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects")]
+    [System.SerializableAttribute()]
+    public partial class TopicB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.DateTime CreationTimeField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private System.Nullable<int> CreatorIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int SectionIdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.DateTime CreationTime {
+            get {
+                return this.CreationTimeField;
+            }
+            set {
+                if ((this.CreationTimeField.Equals(value) != true)) {
+                    this.CreationTimeField = value;
+                    this.RaisePropertyChanged("CreationTime");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public System.Nullable<int> CreatorId {
+            get {
+                return this.CreatorIdField;
+            }
+            set {
+                if ((this.CreatorIdField.Equals(value) != true)) {
+                    this.CreatorIdField = value;
+                    this.RaisePropertyChanged("CreatorId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int SectionId {
+            get {
+                return this.SectionIdField;
+            }
+            set {
+                if ((this.SectionIdField.Equals(value) != true)) {
+                    this.SectionIdField = value;
+                    this.RaisePropertyChanged("SectionId");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
+    [System.Diagnostics.DebuggerStepThroughAttribute()]
+    [System.CodeDom.Compiler.GeneratedCodeAttribute("System.Runtime.Serialization", "4.0.0.0")]
+    [System.Runtime.Serialization.DataContractAttribute(Name="SectionB", Namespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects")]
+    [System.SerializableAttribute()]
+    public partial class SectionB : object, System.Runtime.Serialization.IExtensibleDataObject, System.ComponentModel.INotifyPropertyChanged {
+        
+        [System.NonSerializedAttribute()]
+        private System.Runtime.Serialization.ExtensionDataObject extensionDataField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string DescriptionField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private int IdField;
+        
+        [System.Runtime.Serialization.OptionalFieldAttribute()]
+        private string TitleField;
+        
+        [global::System.ComponentModel.BrowsableAttribute(false)]
+        public System.Runtime.Serialization.ExtensionDataObject ExtensionData {
+            get {
+                return this.extensionDataField;
+            }
+            set {
+                this.extensionDataField = value;
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Description {
+            get {
+                return this.DescriptionField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.DescriptionField, value) != true)) {
+                    this.DescriptionField = value;
+                    this.RaisePropertyChanged("Description");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public int Id {
+            get {
+                return this.IdField;
+            }
+            set {
+                if ((this.IdField.Equals(value) != true)) {
+                    this.IdField = value;
+                    this.RaisePropertyChanged("Id");
+                }
+            }
+        }
+        
+        [System.Runtime.Serialization.DataMemberAttribute()]
+        public string Title {
+            get {
+                return this.TitleField;
+            }
+            set {
+                if ((object.ReferenceEquals(this.TitleField, value) != true)) {
+                    this.TitleField = value;
+                    this.RaisePropertyChanged("Title");
+                }
+            }
+        }
+        
+        public event System.ComponentModel.PropertyChangedEventHandler PropertyChanged;
+        
+        protected void RaisePropertyChanged(string propertyName) {
+            System.ComponentModel.PropertyChangedEventHandler propertyChanged = this.PropertyChanged;
+            if ((propertyChanged != null)) {
+                propertyChanged(this, new System.ComponentModel.PropertyChangedEventArgs(propertyName));
+            }
+        }
+    }
+    
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
     [System.ServiceModel.ServiceContractAttribute(ConfigurationName="BLL_Service.IForumDataService")]
     public interface IForumDataService {
@@ -713,6 +915,30 @@ namespace ProgramDebugConsole.BLL_Service {
         
         [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetSections", ReplyAction="http://tempuri.org/IForumDataService/GetSectionsResponse")]
         System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.Section[]> GetSectionsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/AddTopic", ReplyAction="http://tempuri.org/IForumDataService/AddTopicResponse")]
+        void AddTopic(ProgramDebugConsole.BLL_Service.TopicB topic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/AddTopic", ReplyAction="http://tempuri.org/IForumDataService/AddTopicResponse")]
+        System.Threading.Tasks.Task AddTopicAsync(ProgramDebugConsole.BLL_Service.TopicB topic);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetTopicsInSection", ReplyAction="http://tempuri.org/IForumDataService/GetTopicsInSectionResponse")]
+        ProgramDebugConsole.BLL_Service.TopicB[] GetTopicsInSection(int sectionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetTopicsInSection", ReplyAction="http://tempuri.org/IForumDataService/GetTopicsInSectionResponse")]
+        System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.TopicB[]> GetTopicsInSectionAsync(int sectionId);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetAllTopics", ReplyAction="http://tempuri.org/IForumDataService/GetAllTopicsResponse")]
+        ProgramDebugConsole.BLL_Service.TopicB[] GetAllTopics();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetAllTopics", ReplyAction="http://tempuri.org/IForumDataService/GetAllTopicsResponse")]
+        System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.TopicB[]> GetAllTopicsAsync();
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetSectionById", ReplyAction="http://tempuri.org/IForumDataService/GetSectionByIdResponse")]
+        ProgramDebugConsole.BLL_Service.SectionB GetSectionById(int id);
+        
+        [System.ServiceModel.OperationContractAttribute(Action="http://tempuri.org/IForumDataService/GetSectionById", ReplyAction="http://tempuri.org/IForumDataService/GetSectionByIdResponse")]
+        System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.SectionB> GetSectionByIdAsync(int id);
     }
     
     [System.CodeDom.Compiler.GeneratedCodeAttribute("System.ServiceModel", "4.0.0.0")]
@@ -756,6 +982,38 @@ namespace ProgramDebugConsole.BLL_Service {
         
         public System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.Section[]> GetSectionsAsync() {
             return base.Channel.GetSectionsAsync();
+        }
+        
+        public void AddTopic(ProgramDebugConsole.BLL_Service.TopicB topic) {
+            base.Channel.AddTopic(topic);
+        }
+        
+        public System.Threading.Tasks.Task AddTopicAsync(ProgramDebugConsole.BLL_Service.TopicB topic) {
+            return base.Channel.AddTopicAsync(topic);
+        }
+        
+        public ProgramDebugConsole.BLL_Service.TopicB[] GetTopicsInSection(int sectionId) {
+            return base.Channel.GetTopicsInSection(sectionId);
+        }
+        
+        public System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.TopicB[]> GetTopicsInSectionAsync(int sectionId) {
+            return base.Channel.GetTopicsInSectionAsync(sectionId);
+        }
+        
+        public ProgramDebugConsole.BLL_Service.TopicB[] GetAllTopics() {
+            return base.Channel.GetAllTopics();
+        }
+        
+        public System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.TopicB[]> GetAllTopicsAsync() {
+            return base.Channel.GetAllTopicsAsync();
+        }
+        
+        public ProgramDebugConsole.BLL_Service.SectionB GetSectionById(int id) {
+            return base.Channel.GetSectionById(id);
+        }
+        
+        public System.Threading.Tasks.Task<ProgramDebugConsole.BLL_Service.SectionB> GetSectionByIdAsync(int id) {
+            return base.Channel.GetSectionByIdAsync(id);
         }
     }
 }

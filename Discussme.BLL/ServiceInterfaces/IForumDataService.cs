@@ -1,5 +1,6 @@
 ﻿using System.ServiceModel;
 using System.Collections.Generic;
+using Discussme.BLL.DbObjects;
 
 namespace Discussme.BLL.ServiceInterfaces
 {
@@ -12,5 +13,17 @@ namespace Discussme.BLL.ServiceInterfaces
 
         [OperationContract]
         IEnumerable<Discussme.DAL.Entities.Section> GetSections();
+
+        [OperationContract]
+        void AddTopic(TopicB topic);
+
+        [OperationContract]
+        IEnumerable<TopicB> GetTopicsInSection(int sectionId);
+
+        [OperationContract]
+        IEnumerable<TopicB> GetAllTopics();
+
+        [OperationContract]
+        SectionB GetSectionById(int id);
     }
 }

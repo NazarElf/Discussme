@@ -12,14 +12,20 @@ namespace ProgramDebugConsole
         {
             using (BLL_Service.ForumDataServiceClient fdsc = new BLL_Service.ForumDataServiceClient())
             {
-                fdsc.AddSection(3, null, null);
-                var sections = fdsc.GetSections();
-                foreach (var item in sections)
+                Console.WriteLine("In 1st section:");
+                var _1top = fdsc.GetTopicsInSection(1);
+                foreach (var item in _1top)
                 {
-                    Console.WriteLine("--------Sections-------");
-                    Console.WriteLine($"{item.Id}: \"{item.Title}\" \n{item.Description}");
+                    Console.WriteLine(item.Title);
+                }
+                Console.WriteLine("All Topics:");
+                var _all = fdsc.GetAllTopics();
+                foreach (var item in _all)
+                {
+                    Console.WriteLine($"{item.Title} from section {item.SectionId}");
                 }
             }
+            Console.WriteLine("Connection ended, it seems that everything ok");
             Console.ReadLine();
         }
     }

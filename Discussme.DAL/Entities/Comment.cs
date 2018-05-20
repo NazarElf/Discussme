@@ -1,4 +1,5 @@
 ﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace Discussme.DAL.Entities
 {
@@ -7,6 +8,8 @@ namespace Discussme.DAL.Entities
         //Uniq identificator
         public int Id { get; set; }
         //Body of comment
+        [Required]
+        [DataType(DataType.MultilineText)]
         public string Description { get; set; }
         //DateTime of comment, list of comments will be 
         //sorted by this field
@@ -14,10 +17,10 @@ namespace Discussme.DAL.Entities
         
         //Id of Creator of comment and ref for creator
         public int CreatorId { get; set; }
-        public User Creator { get; set; }
+        public virtual User Creator { get; set; }
 
         //Id of Topic where comment was left and ref for this topic
         public int TopicId { get; set; }
-        public Topic ParrentTopic { get; set; }
+        public virtual Topic ParrentTopic { get; set; }
     }
 }

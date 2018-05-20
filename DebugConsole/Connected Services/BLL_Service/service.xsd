@@ -1,6 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
   <xs:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" />
   <xs:element name="AddSection">
     <xs:complexType>
       <xs:sequence>
@@ -24,6 +25,58 @@
     <xs:complexType>
       <xs:sequence>
         <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" minOccurs="0" name="GetSectionsResult" nillable="true" type="q1:ArrayOfSection" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTopic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="topic" nillable="true" type="q2:TopicB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddTopicResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTopicsInSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="sectionId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetTopicsInSectionResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetTopicsInSectionResult" nillable="true" type="q3:ArrayOfTopicB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTopics">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTopicsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetAllTopicsResult" nillable="true" type="q4:ArrayOfTopicB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSectionById">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="id" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetSectionByIdResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetSectionByIdResult" nillable="true" type="q5:SectionB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>

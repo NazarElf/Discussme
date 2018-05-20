@@ -6,6 +6,7 @@
       <xsd:import namespace="http://schemas.microsoft.com/2003/10/Serialization/" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" />
       <xsd:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Enums" />
+      <xsd:import namespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" />
     </xsd:schema>
   </wsdl:types>
   <wsdl:message name="IForumDataService_AddSection_InputMessage">
@@ -20,6 +21,30 @@
   <wsdl:message name="IForumDataService_GetSections_OutputMessage">
     <wsdl:part name="parameters" element="tns:GetSectionsResponse" />
   </wsdl:message>
+  <wsdl:message name="IForumDataService_AddTopic_InputMessage">
+    <wsdl:part name="parameters" element="tns:AddTopic" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_AddTopic_OutputMessage">
+    <wsdl:part name="parameters" element="tns:AddTopicResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetTopicsInSection_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopicsInSection" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetTopicsInSection_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetTopicsInSectionResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetAllTopics_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTopics" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetAllTopics_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAllTopicsResponse" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetSectionById_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionById" />
+  </wsdl:message>
+  <wsdl:message name="IForumDataService_GetSectionById_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetSectionByIdResponse" />
+  </wsdl:message>
   <wsdl:portType name="IForumDataService">
     <wsdl:operation name="AddSection">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/AddSection" message="tns:IForumDataService_AddSection_InputMessage" />
@@ -28,6 +53,22 @@
     <wsdl:operation name="GetSections">
       <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/GetSections" message="tns:IForumDataService_GetSections_InputMessage" />
       <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/GetSectionsResponse" message="tns:IForumDataService_GetSections_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="AddTopic">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/AddTopic" message="tns:IForumDataService_AddTopic_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/AddTopicResponse" message="tns:IForumDataService_AddTopic_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsInSection">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/GetTopicsInSection" message="tns:IForumDataService_GetTopicsInSection_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/GetTopicsInSectionResponse" message="tns:IForumDataService_GetTopicsInSection_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopics">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/GetAllTopics" message="tns:IForumDataService_GetAllTopics_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/GetAllTopicsResponse" message="tns:IForumDataService_GetAllTopics_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetSectionById">
+      <wsdl:input wsaw:Action="http://tempuri.org/IForumDataService/GetSectionById" message="tns:IForumDataService_GetSectionById_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IForumDataService/GetSectionByIdResponse" message="tns:IForumDataService_GetSectionById_OutputMessage" />
     </wsdl:operation>
   </wsdl:portType>
   <wsdl:binding name="BasicHttpBinding_IForumDataService" type="tns:IForumDataService">
@@ -43,6 +84,42 @@
     </wsdl:operation>
     <wsdl:operation name="GetSections">
       <soap:operation soapAction="http://tempuri.org/IForumDataService/GetSections" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="AddTopic">
+      <soap:operation soapAction="http://tempuri.org/IForumDataService/AddTopic" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetTopicsInSection">
+      <soap:operation soapAction="http://tempuri.org/IForumDataService/GetTopicsInSection" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAllTopics">
+      <soap:operation soapAction="http://tempuri.org/IForumDataService/GetAllTopics" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetSectionById">
+      <soap:operation soapAction="http://tempuri.org/IForumDataService/GetSectionById" style="document" />
       <wsdl:input>
         <soap:body use="literal" />
       </wsdl:input>
