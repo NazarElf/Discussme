@@ -20,5 +20,6 @@ namespace Discussme.DAL.Interfaces
 
         //Delete
         void DeleteById(int id);
+        void Delete(T item);
     }
 }

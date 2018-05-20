@@ -1,5 +1,38 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:complexType name="UserB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="DateOfBirth" nillable="true" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Email" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Firstname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Info" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="IsBanned" type="xs:boolean" />
+      <xs:element minOccurs="0" name="LastSeenTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="Lastname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Nickname" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="RegistrationTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="UserPrivacy" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="UserRole" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="UserB" nillable="true" type="tns:UserB" />
+  <xs:complexType name="LoginData">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Login" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Password" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="LoginData" nillable="true" type="tns:LoginData" />
+  <xs:complexType name="SectionB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="SectionB" nillable="true" type="tns:SectionB" />
   <xs:complexType name="TopicB">
     <xs:sequence>
       <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
@@ -11,18 +44,32 @@
     </xs:sequence>
   </xs:complexType>
   <xs:element name="TopicB" nillable="true" type="tns:TopicB" />
+  <xs:complexType name="CommentB">
+    <xs:sequence>
+      <xs:element minOccurs="0" name="CreationTime" type="xs:dateTime" />
+      <xs:element minOccurs="0" name="CreatorId" type="xs:int" />
+      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" name="Id" type="xs:int" />
+      <xs:element minOccurs="0" name="TopicId" type="xs:int" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="CommentB" nillable="true" type="tns:CommentB" />
+  <xs:complexType name="ArrayOfSectionB">
+    <xs:sequence>
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="SectionB" nillable="true" type="tns:SectionB" />
+    </xs:sequence>
+  </xs:complexType>
+  <xs:element name="ArrayOfSectionB" nillable="true" type="tns:ArrayOfSectionB" />
   <xs:complexType name="ArrayOfTopicB">
     <xs:sequence>
       <xs:element minOccurs="0" maxOccurs="unbounded" name="TopicB" nillable="true" type="tns:TopicB" />
     </xs:sequence>
   </xs:complexType>
   <xs:element name="ArrayOfTopicB" nillable="true" type="tns:ArrayOfTopicB" />
-  <xs:complexType name="SectionB">
+  <xs:complexType name="ArrayOfCommentB">
     <xs:sequence>
-      <xs:element minOccurs="0" name="Description" nillable="true" type="xs:string" />
-      <xs:element minOccurs="0" name="Id" type="xs:int" />
-      <xs:element minOccurs="0" name="Title" nillable="true" type="xs:string" />
+      <xs:element minOccurs="0" maxOccurs="unbounded" name="CommentB" nillable="true" type="tns:CommentB" />
     </xs:sequence>
   </xs:complexType>
-  <xs:element name="SectionB" nillable="true" type="tns:SectionB" />
+  <xs:element name="ArrayOfCommentB" nillable="true" type="tns:ArrayOfCommentB" />
 </xs:schema>

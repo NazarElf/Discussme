@@ -78,13 +78,7 @@
     <None Include="Connected Services\BLL_Service\Discussme.BLL.DbObjects.xsd">
       <SubType>Designer</SubType>
     </None>
-    <None Include="Connected Services\BLL_Service\Discussme.DAL.Entities.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\BLL_Service\Discussme.DAL.Enums.xsd">
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="Connected Services\BLL_Service\ProgramDebugConsole.BLL_Service.Section.datasource">
+    <None Include="Connected Services\BLL_Service\ProgramDebugConsole.BLL_Service.CommentB.datasource">
       <DependentUpon>Reference.svcmap</DependentUpon>
     </None>
     <None Include="Connected Services\BLL_Service\ProgramDebugConsole.BLL_Service.SectionB.datasource">
@@ -98,6 +92,9 @@
       <SubType>Designer</SubType>
     </None>
     <None Include="Connected Services\BLL_Service\service1.xsd">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Connected Services\BLL_Service\System.xsd">
       <SubType>Designer</SubType>
     </None>
   </ItemGroup>

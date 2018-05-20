@@ -16,6 +16,8 @@ namespace Discussme.DAL.DbClasses
 
         public void Create(User item) => db.Users.Add(item);
 
+        public void Delete(User item) => db.Users.Remove(item);
+
         public void DeleteById(int id) => db.Users.Remove(ReadItemById(id));
 
         public IEnumerable<User> FindAll(Func<User, bool> predicate) => db.Users.Where(predicate);

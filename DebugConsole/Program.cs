@@ -10,20 +10,10 @@ namespace ProgramDebugConsole
     {
         static void Main(string[] args)
         {
-            using (BLL_Service.ForumDataServiceClient fdsc = new BLL_Service.ForumDataServiceClient())
+            using (BLL_Service.ForumServiceClient fdsc = new BLL_Service.ForumServiceClient())
             {
-                Console.WriteLine("In 1st section:");
-                var _1top = fdsc.GetTopicsInSection(1);
-                foreach (var item in _1top)
-                {
-                    Console.WriteLine(item.Title);
-                }
-                Console.WriteLine("All Topics:");
-                var _all = fdsc.GetAllTopics();
-                foreach (var item in _all)
-                {
-                    Console.WriteLine($"{item.Title} from section {item.SectionId}");
-                }
+                fdsc.GetTopicsInSection(2);
+
             }
             Console.WriteLine("Connection ended, it seems that everything ok");
             Console.ReadLine();

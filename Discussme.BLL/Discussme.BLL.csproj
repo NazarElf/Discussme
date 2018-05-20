@@ -43,6 +43,12 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.Core, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.1\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.Identity.EntityFramework, Version=2.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Identity.EntityFramework.2.2.1\lib\net45\Microsoft.AspNet.Identity.EntityFramework.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
@@ -55,14 +61,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbObjects\CommentB.cs" />
+    <Compile Include="DbObjects\LoginData.cs" />
     <Compile Include="DbObjects\SectionB.cs" />
     <Compile Include="DbObjects\TopicB.cs" />
     <Compile Include="DbObjects\UserB.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ServiceClasses\ForumDataService.cs" />
-    <Compile Include="ServiceClasses\UserService.cs" />
-    <Compile Include="ServiceInterfaces\IForumDataService.cs" />
-    <Compile Include="ServiceInterfaces\IUserService.cs" />
+    <Compile Include="ServiceClasses\ForumService.cs" />
+    <Compile Include="ServiceInterfaces\IForumService.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />

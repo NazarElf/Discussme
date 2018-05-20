@@ -1,13 +1,53 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <xs:schema xmlns:tns="http://tempuri.org/" elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
-  <xs:import namespace="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" />
   <xs:import namespace="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" />
+  <xs:import namespace="http://schemas.datacontract.org/2004/07/System" />
+  <xs:element name="RegisterUser">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="registerUser" nillable="true" type="q1:UserB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RegisterUserResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="RegisterUserResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="Login">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="data" nillable="true" type="q2:LoginData" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="LoginResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="LoginResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeData">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="toChange" nillable="true" type="q3:UserB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="ChangeDataResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="ChangeDataResult" type="xs:boolean" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
   <xs:element name="AddSection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
-        <xs:element minOccurs="0" name="title" nillable="true" type="xs:string" />
-        <xs:element minOccurs="0" name="description" nillable="true" type="xs:string" />
+        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="section" nillable="true" type="q4:SectionB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
@@ -16,28 +56,40 @@
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSections">
-    <xs:complexType>
-      <xs:sequence />
-    </xs:complexType>
-  </xs:element>
-  <xs:element name="GetSectionsResponse">
-    <xs:complexType>
-      <xs:sequence>
-        <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Discussme.DAL.Entities" minOccurs="0" name="GetSectionsResult" nillable="true" type="q1:ArrayOfSection" />
-      </xs:sequence>
-    </xs:complexType>
-  </xs:element>
   <xs:element name="AddTopic">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="topic" nillable="true" type="q2:TopicB" />
+        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="topic" nillable="true" type="q5:TopicB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="AddTopicResponse">
     <xs:complexType>
       <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q6="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="comment" nillable="true" type="q6:CommentB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="AddCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSections">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllSectionsResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q7="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetAllSectionsResult" nillable="true" type="q7:ArrayOfSectionB" />
+      </xs:sequence>
     </xs:complexType>
   </xs:element>
   <xs:element name="GetTopicsInSection">
@@ -50,34 +102,122 @@
   <xs:element name="GetTopicsInSectionResponse">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetTopicsInSectionResult" nillable="true" type="q3:ArrayOfTopicB" />
+        <xs:element xmlns:q8="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetTopicsInSectionResult" nillable="true" type="q8:ArrayOfTopicB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllTopics">
+  <xs:element name="GetCommentsInTopic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element minOccurs="0" name="topicId" type="xs:int" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetCommentsInTopicResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q9="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetCommentsInTopicResult" nillable="true" type="q9:ArrayOfCommentB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTopicsByPredicate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q10="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q10:FuncOfTopicBbooleanwrxYjG1K" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllTopicsByPredicateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q11="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetAllTopicsByPredicateResult" nillable="true" type="q11:ArrayOfTopicB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllComentsByPredicate">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q12="http://schemas.datacontract.org/2004/07/System" minOccurs="0" name="predicate" nillable="true" type="q12:FuncOfCommentBbooleanwrxYjG1K" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="GetAllComentsByPredicateResponse">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q13="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetAllComentsByPredicateResult" nillable="true" type="q13:ArrayOfCommentB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSection">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q14="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="section" nillable="true" type="q14:SectionB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateSectionResponse">
     <xs:complexType>
       <xs:sequence />
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetAllTopicsResponse">
+  <xs:element name="UpdateComment">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q4="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetAllTopicsResult" nillable="true" type="q4:ArrayOfTopicB" />
+        <xs:element xmlns:q15="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="comment" nillable="true" type="q15:CommentB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSectionById">
+  <xs:element name="UpdateCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="UpdateTopic">
     <xs:complexType>
       <xs:sequence>
-        <xs:element minOccurs="0" name="id" type="xs:int" />
+        <xs:element xmlns:q16="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="topic" nillable="true" type="q16:TopicB" />
       </xs:sequence>
     </xs:complexType>
   </xs:element>
-  <xs:element name="GetSectionByIdResponse">
+  <xs:element name="UpdateTopicResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveSection">
     <xs:complexType>
       <xs:sequence>
-        <xs:element xmlns:q5="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="GetSectionByIdResult" nillable="true" type="q5:SectionB" />
+        <xs:element xmlns:q17="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="section" nillable="true" type="q17:SectionB" />
       </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveSectionResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTopic">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q18="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="topic" nillable="true" type="q18:TopicB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveTopicResponse">
+    <xs:complexType>
+      <xs:sequence />
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveComment">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element xmlns:q19="http://schemas.datacontract.org/2004/07/Discussme.BLL.DbObjects" minOccurs="0" name="comment" nillable="true" type="q19:CommentB" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+  <xs:element name="RemoveCommentResponse">
+    <xs:complexType>
+      <xs:sequence />
     </xs:complexType>
   </xs:element>
 </xs:schema>

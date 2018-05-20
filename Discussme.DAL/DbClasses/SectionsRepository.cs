@@ -16,6 +16,8 @@ namespace Discussme.DAL.DbClasses
 
         public void Create(Section item) => db.Sections.Add(item);
 
+        public void Delete(Section item) => db.Sections.Remove(item);
+
         public void DeleteById(int id) => db.Sections.Remove(ReadItemById(id));
 
         public IEnumerable<Section> FindAll(Func<Section, bool> predicate) => db.Sections.Where(predicate);
