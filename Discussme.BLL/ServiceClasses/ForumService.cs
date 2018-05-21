@@ -7,44 +7,77 @@ using Discussme.BLL.ServiceInterfaces;
 using Discussme.BLL.DbObjects;
 using AutoMapper;
 using Discussme.DAL.Entities;
+using System.Security.Claims;
+using Discussme.DAL.DbClasses;
+using Discussme.DAL.Interfaces;
+using Discussme.DAL.Identity;
+using Microsoft.AspNet.Identity;
 
 namespace Discussme.BLL.ServiceClasses
 {
 
     class ForumService : IForumService
     {
-        Discussme.DAL.Interfaces.IUnitOfWork db;
+        IUnitOfWork db;
 
         public ForumService()
         {
-            db = new Discussme.DAL.DbClasses.UnitOfWork();
+            db = new UnitOfWork();
         }
-
-        #region User
-
-        public bool RegisterUser(UserB registerUser)
+        public ForumService(IUnitOfWork uow)
         {
-            Mapper.Initialize(c => c.CreateMap<UserB, User>());
-            //Need to check data
-            db.Users.Create(Mapper.Map<User>(registerUser));
-            return true;
+            db = uow;
         }
 
-        public bool Login(LoginData data)
+        public async Task<OperationDetails> Create(UserB userB)
         {
-            //Need to check password;
-            throw new NotImplementedException();
+            IdentityForumUser user = await db.UserManager.FindByEmailAsync(userB.Email);
+            if(userB == null)
+            {
+                user = new IdentityForumUser { Email = userB.Email, UserName = userB.Nickname };
+                var res = await db.UserManager.CreateAsync(user, userB.Password);
+                if (res.Errors.Count() > 0)
+                    return new OperationDetails(false, res.Errors.FirstOrDefault(), "");
+                await db.UserManager.AddToRoleAsync(user.Id, userB.UserRole);
+                Mapper.Initialize(c => c.CreateMap<UserB, User>());
+                User profile = Mapper.Map<User>(userB);
+                profile.Id = user.Id;
+                db.ClientManager.Create(profile);
+                return new OperationDetails(true, "Registration complited", "");
+            }
+            else
+            {
+                return new OperationDetails(false, "User with that email is already exist", "Email");
+            }
         }
 
-        public bool ChangeData(UserB toChange)
+        public async Task<ClaimsIdentity> Authenticate(UserB userB)
         {
-            Mapper.Initialize(c => c.CreateMap<UserB, User>());
-            //Need to check permission
-            db.Users.Update(Mapper.Map<User>(toChange));
-            return true;
+            ClaimsIdentity claim = null;
+            IdentityForumUser user = await db.UserManager.FindAsync(userB.Email, userB.Password);
+            if (user != null)
+                claim = await db.UserManager.CreateIdentityAsync(user, DefaultAuthenticationTypes.ApplicationCookie);
+            return claim;
         }
 
-        #endregion
+        public async Task SetInitData(UserB admin, List<string> roles)
+        {
+            foreach (string item in roles)
+            {
+                var role = await db.RoleManager.FindByNameAsync(item);
+                if(role == null)
+                {
+                    role = new ForumRole { Name = item };
+                    await db.RoleManager.CreateAsync(role);
+                }
+            }
+            await Create(admin);
+        }
+
+        public void Dispose()
+        {
+            db.Dispose();
+        }
 
         #region Create
 

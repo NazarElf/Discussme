@@ -27,6 +27,7 @@ namespace Discussme.DAL.DbClasses
             userManager = new IdentityForumUserManager(new UserStore<IdentityForumUser>(db));
             roleManager = new ForumRoleManager(new RoleStore<ForumRole>(db));
             clientManager = new ClientManager(db);
+            
         }
 
         public UnitOfWork()
@@ -79,7 +80,7 @@ namespace Discussme.DAL.DbClasses
 
         public IdentityForumUserManager UserManager
         {
-            get => userManager;
+            get { return userManager; }
         }
 
         public IClientManager ClientManager

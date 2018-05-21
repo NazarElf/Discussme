@@ -8,14 +8,10 @@ using System.Runtime.Serialization;
 namespace Discussme.BLL.DbObjects
 {
     // B means Business logic's object
-    [DataContract]
     class SectionB
     {
-        [DataMember]
         public int Id { get; set; }
-        [DataMember]
         public string Title { get; set; }
-        [DataMember]
         public string Description { get; set; }
     }
 }
