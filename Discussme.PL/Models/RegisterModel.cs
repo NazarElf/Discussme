@@ -17,9 +17,18 @@ namespace Discussme.PL.Models
         [DataType(DataType.Password)]
         [Compare("Password")]
         public string ConfirmPassword { get; set; }
+
         [Required]
         public string Nickname { get; set; }
+        
+        public string Firstname { get; set; }
+        public string Lastname { get; set; }
 
+        [DataType(DataType.Date)]
+        public DateTime? DateOfBirth { get; set; }
+
+        [DataType(DataType.MultilineText)]
+        public string Info { get; set; }
 
         //this will be some more fields
     }

@@ -5,6 +5,8 @@ using Discussme.DAL.DbContextes;
 using Discussme.DAL.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System.Threading.Tasks;
+using System.Collections.Generic;
+using Microsoft.AspNet.Identity;
 
 namespace Discussme.DAL.DbClasses
 {
@@ -27,7 +29,6 @@ namespace Discussme.DAL.DbClasses
             userManager = new IdentityForumUserManager(new UserStore<IdentityForumUser>(db));
             roleManager = new ForumRoleManager(new RoleStore<ForumRole>(db));
             clientManager = new ClientManager(db);
-            
         }
 
         public UnitOfWork()
@@ -36,6 +37,39 @@ namespace Discussme.DAL.DbClasses
             userManager = new IdentityForumUserManager(new UserStore<IdentityForumUser>(db));
             roleManager = new ForumRoleManager(new RoleStore<ForumRole>(db));
             clientManager = new ClientManager(db);
+            var roles = new string[]{ "user", "admin" };
+            foreach (string item in roles)
+            {
+                var role = RoleManager.FindByNameAsync(item).Result;
+                if (role == null)
+                {
+                    role = new ForumRole { Name = item };
+                    RoleManager.CreateAsync(role);
+                }
+            }
+            IdentityForumUser user = UserManager.FindByEmailAsync("nnn43@ukr.net").Result;
+            if (user == null)
+            {
+                User admin = new User()
+                {
+                    LastSeenTime = DateTime.Now,
+                    RegistrationTime = DateTime.Now,
+                    Nickname = "Rover_Go",
+                    Password = "MyMyMyMyPassword",
+                    UserPrivacy = Enums.Privacy.Private,
+                };
+                user = new IdentityForumUser { Email = "nnn43@ukr.net", UserName = admin.Nickname };
+                var res = UserManager.CreateAsync(user, admin.Password).Result;
+                UserManager.AddToRole(user.Id, "admin");
+                User profile = admin;
+                profile.Id = user.Id;
+                ClientManager.Create(profile);
+                //return new OperationDetails(true, "Registration complited", "");
+            }
+            else
+            {
+                //return new OperationDetails(false, "User with that email is already exist", "Email");
+            }
         }
 
         public IRepository<Comment, int> Comments

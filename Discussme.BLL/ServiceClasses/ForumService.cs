@@ -30,10 +30,10 @@ namespace Discussme.BLL.ServiceClasses
             db = uow;
         }
 
-        public async Task<OperationDetails> Create(UserB userB)
+        public async Task<OperationDetails> CreateAsync(UserB userB)
         {
             IdentityForumUser user = await db.UserManager.FindByEmailAsync(userB.Email);
-            if(userB == null)
+            if(user == null)
             {
                 user = new IdentityForumUser { Email = userB.Email, UserName = userB.Nickname };
                 var res = await db.UserManager.CreateAsync(user, userB.Password);
@@ -53,7 +53,7 @@ namespace Discussme.BLL.ServiceClasses
             }
         }
 
-        public async Task<ClaimsIdentity> Authenticate(UserB userB)
+        public async Task<ClaimsIdentity> AuthenticateAsync(UserB userB)
         {
             ClaimsIdentity claim = null;
             IdentityForumUser user = await db.UserManager.FindAsync(userB.Email, userB.Password);
@@ -62,7 +62,7 @@ namespace Discussme.BLL.ServiceClasses
             return claim;
         }
 
-        public async Task SetInitData(UserB admin, List<string> roles)
+        public async Task SetInitDataAsync(UserB admin, List<string> roles)
         {
             foreach (string item in roles)
             {
@@ -73,7 +73,44 @@ namespace Discussme.BLL.ServiceClasses
                     await db.RoleManager.CreateAsync(role);
                 }
             }
-            await Create(admin);
+            await CreateAsync(admin);
+        }
+
+        public OperationDetails Create(UserB userB)
+        {
+            IdentityForumUser user = db.UserManager.FindByEmail(userB.Email);
+            if (user == null)
+            {
+                user = new IdentityForumUser { Email = userB.Email, UserName = userB.Nickname };
+                var res = db.UserManager.Create(user, userB.Password);
+                if (res.Errors.Count() > 0)
+                    return new OperationDetails(false, res.Errors.FirstOrDefault(), "");
+                db.UserManager.AddToRole(user.Id, userB.UserRole);
+                Mapper.Initialize(c => c.CreateMap<UserB, User>());
+                User profile = Mapper.Map<User>(userB);
+                Mapper.Reset();
+                profile.Id = user.Id;
+                db.ClientManager.Create(profile);
+                return new OperationDetails(true, "Registration complited", "");
+            }
+            else
+            {
+                return new OperationDetails(false, "User with that email is already exist", "Email");
+            }
+        }
+
+        public void SetInitData(UserB admin, List<string> roles)
+        {
+            foreach (string item in roles)
+            {
+                var role = db.RoleManager.FindByName(item);
+                if (role == null)
+                {
+                    role = new ForumRole { Name = item };
+                    db.RoleManager.Create(role);
+                }
+            }
+            Create(admin);
         }
 
         public void Dispose()

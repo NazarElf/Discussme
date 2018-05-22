@@ -8,6 +8,7 @@ using System.Security.Claims;
 using Discussme.PL.Models;
 using Discussme.BLL.DbObjects;
 using Discussme.BLL.ServiceInterfaces;
+using System;
 
 namespace Discussme.PL.Controllers
 {
@@ -38,7 +39,7 @@ namespace Discussme.PL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Login(LoginModel model)
         {
-            await ForumService.SetInitData(new UserB
+            await ForumService.SetInitDataAsync(new UserB
             {
                 Email = "nnn43@ukr.net",
                 Nickname = "Rover_Go",
@@ -52,7 +53,7 @@ namespace Discussme.PL.Controllers
             if(ModelState.IsValid)
             {
                 UserB userB = new UserB { Email = model.Email, Password = model.Password };
-                ClaimsIdentity claim = await ForumService.Authenticate(userB);
+                ClaimsIdentity claim = await ForumService.AuthenticateAsync(userB);
                 if(claim == null)
                 {
                     ModelState.AddModelError("", "Wrong Password");
@@ -82,17 +83,6 @@ namespace Discussme.PL.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Register(RegisterModel model)
         {
-            await ForumService.SetInitData(new UserB
-            {
-                Email = "nnn43@ukr.net",
-                Nickname = "Rover_Go",
-                Password = "Somebody4_4Someone",
-                Firstname = "Nazar",
-                Lastname = "Yurchenko",
-                UserRole = "admin",
-                UserPrivacy = "public",
-            }, new List<string> { "user", "admin" });
-
             if (ModelState.IsValid)
             {
                 UserB userDto = new UserB
@@ -100,9 +90,11 @@ namespace Discussme.PL.Controllers
                     Email = model.Email,
                     Password = model.Password,
                     Nickname = model.Nickname,
-                    UserRole = "user"
+                    LastSeenTime = DateTime.Now,
+                    RegistrationTime = DateTime.Now,
+                    UserRole = "user",
                 };
-                OperationDetails operationDetails = await ForumService.Create(userDto);
+                OperationDetails operationDetails = await ForumService.CreateAsync(userDto);
                 if (operationDetails.Succedeed)
                     return View("SuccessRegister");
                 else

@@ -9,9 +9,9 @@ namespace Discussme.BLL.ServiceInterfaces
     //Service for interaction with db objects
     public interface IForumService : IDisposable
     {
-        Task<OperationDetails> Create(UserB user);
-        Task<ClaimsIdentity> Authenticate(UserB user);
-        Task SetInitData(UserB admin, List<string> roles);
+        Task<OperationDetails> CreateAsync(UserB user);
+        Task<ClaimsIdentity> AuthenticateAsync(UserB user);
+        Task SetInitDataAsync(UserB admin, List<string> roles);
 
 
         #region Create methods

@@ -22,6 +22,7 @@ namespace Discussme.DAL.DbContextes
         {
             //modelBuilder.Entity<Section>().Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
             //modelBuilder.Entity<Topic>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            //modelBuilder.Entity<User>().
             base.OnModelCreating(modelBuilder);
         }
     }
@@ -76,6 +77,16 @@ namespace Discussme.DAL.DbContextes
             context.Topics.Add(topic4);
 
             context.SaveChanges();
+            //await forumservice.setinitdataasync(new userb
+            //{
+            //    email = "nnn43@ukr.net",
+            //    nickname = "rover_go",
+            //    password = "somebody4_4someone",
+            //    firstname = "nazar",
+            //    lastname = "yurchenko",
+            //    userrole = "admin",
+            //    userprivacy = "public",
+            //}, new list<string> { "user", "admin" });
         }
     }
 }
