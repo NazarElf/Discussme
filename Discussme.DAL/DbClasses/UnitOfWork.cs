@@ -36,40 +36,7 @@ namespace Discussme.DAL.DbClasses
             db = new MainContext();
             userManager = new IdentityForumUserManager(new UserStore<IdentityForumUser>(db));
             roleManager = new ForumRoleManager(new RoleStore<ForumRole>(db));
-            clientManager = new ClientManager(db);
-            var roles = new string[]{ "user", "admin" };
-            foreach (string item in roles)
-            {
-                var role = RoleManager.FindByNameAsync(item).Result;
-                if (role == null)
-                {
-                    role = new ForumRole { Name = item };
-                    RoleManager.CreateAsync(role);
-                }
-            }
-            IdentityForumUser user = UserManager.FindByEmailAsync("nnn43@ukr.net").Result;
-            if (user == null)
-            {
-                User admin = new User()
-                {
-                    LastSeenTime = DateTime.Now,
-                    RegistrationTime = DateTime.Now,
-                    Nickname = "Rover_Go",
-                    Password = "MyMyMyMyPassword",
-                    UserPrivacy = Enums.Privacy.Private,
-                };
-                user = new IdentityForumUser { Email = "nnn43@ukr.net", UserName = admin.Nickname };
-                var res = UserManager.CreateAsync(user, admin.Password).Result;
-                UserManager.AddToRole(user.Id, "admin");
-                User profile = admin;
-                profile.Id = user.Id;
-                ClientManager.Create(profile);
-                //return new OperationDetails(true, "Registration complited", "");
-            }
-            else
-            {
-                //return new OperationDetails(false, "User with that email is already exist", "Email");
-            }
+            clientManager = new ClientManager(db);            
         }
 
         public IRepository<Comment, int> Comments

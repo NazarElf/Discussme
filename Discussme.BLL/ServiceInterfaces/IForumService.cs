@@ -32,15 +32,13 @@ namespace Discussme.BLL.ServiceInterfaces
  
         IEnumerable<SectionB> GetAllSections();
 
+        //Task<IEnumerable<SectionB>> GetAllSectionsAsync();
  
         IEnumerable<TopicB> GetTopicsInSection(int sectionId);
-
  
         IEnumerable<CommentB> GetCommentsInTopic(int topicId);
-
  
         IEnumerable<TopicB> GetAllTopicsByPredicate(Func<TopicB, bool> predicate);
-
  
         IEnumerable<CommentB> GetAllComentsByPredicate(Func<CommentB, bool> predicate);
 

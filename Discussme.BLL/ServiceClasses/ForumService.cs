@@ -30,6 +30,8 @@ namespace Discussme.BLL.ServiceClasses
             db = uow;
         }
 
+        #region User operations
+
         public async Task<OperationDetails> CreateAsync(UserB userB)
         {
             IdentityForumUser user = await db.UserManager.FindByEmailAsync(userB.Email);
@@ -113,6 +115,8 @@ namespace Discussme.BLL.ServiceClasses
             Create(admin);
         }
 
+        #endregion
+
         public void Dispose()
         {
             db.Dispose();
@@ -150,6 +154,14 @@ namespace Discussme.BLL.ServiceClasses
 
         #region Read
 
+        //public Task<IEnumerable<SectionB>> GetAllSectionsAsync()
+        //{
+        //    Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
+        //    var sections = Mapper.Map<IEnumerable<Section>, List<SectionB>>(db.Sections.ReadList());
+        //    Mapper.Reset();
+        //    return sections;
+        //}
+
         public SectionB GetSectionById(int id)
         {
             Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
@@ -176,21 +188,10 @@ namespace Discussme.BLL.ServiceClasses
 
         public IEnumerable<SectionB> GetAllSections()
         {
-            try
-            {
-                Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
-                var sections = Mapper.Map<IEnumerable<Section>, List<SectionB>>(db.Sections.ReadList());
-                Mapper.Reset();
-                return sections;
-            }
-            catch (DbEntityValidationException ex)
-            {
-                throw ex;
-            }
-            catch (Exception ex)
-            {
-                throw ex.InnerException.InnerException.InnerException;
-            }
+            Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
+            var sections = Mapper.Map<IEnumerable<Section>, List<SectionB>>(db.Sections.ReadList());
+            Mapper.Reset();
+            return sections;
         }
 
         public IEnumerable<CommentB> GetCommentsInTopic(int topicId)

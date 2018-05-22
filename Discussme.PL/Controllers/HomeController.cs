@@ -21,7 +21,7 @@ namespace Discussme.PL.Controllers
             }
         }
 
-        async Task<ActionResult> Index()
+        public ActionResult Index()
         {
             var listOfSections = ForumService.GetAllSections();
             List<SectionsModel> list = new List<SectionsModel>();

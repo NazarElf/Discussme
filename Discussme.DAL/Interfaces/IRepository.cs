@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Discussme.DAL.Interfaces
 {
@@ -11,6 +12,7 @@ namespace Discussme.DAL.Interfaces
         void Create(TEntity item);
 
         //Read
+        //Task<IEnumerable<TEntity>> ReadListAsync();
         IEnumerable<TEntity> ReadList();
         IEnumerable<TEntity> FindAll(Func<TEntity, bool> predicate);
         TEntity ReadItemById(TKey id);

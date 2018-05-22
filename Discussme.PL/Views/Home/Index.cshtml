@@ -3,29 +3,20 @@
 @{
     ViewBag.Title = "Index";
 }
+<p style="height: 20px"/>
+<h6 style="font-size: 64px; font-family: 'Bump it up fixed 0'">DISCUSSME</h6>
+<p style="height: 20px"/>
 
-<h2>Index</h2>
-
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.SectionName)
-        </th>
-        <th></th>
-    </tr>
 
 @foreach (var item in Model) {
     <tr>
-        <td>
+        <td style="font-weight: bold; font-size:16px">
             @Html.DisplayFor(modelItem => item.SectionName)
         </td>
         <td>
             @Html.ActionLink("Edit", "Edit", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ }) |
-            @Html.ActionLink("Delete", "Delete", new { /* id=item.PrimaryKey */ })
+            @Html.ActionLink("Details", "Details", new { /* id=item.PrimaryKey */ })
         </td>
     </tr>
 }

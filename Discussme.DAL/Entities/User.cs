@@ -14,8 +14,8 @@ namespace Discussme.DAL.Entities
         public string Id { get; set; }
 
         //User's nickname
-        [Required]
-        public string Nickname { get; set; }
+        //[Required]
+        //public string Nickname { get; set; }
 
         //Don't need this anymore, because Identity already have it
         //[Required]
@@ -23,9 +23,9 @@ namespace Discussme.DAL.Entities
         //public string Email { get; set; }
 
         //User's password
-        [Required]
-        [DataType(DataType.Password)]
-        public string Password { get; set; }
+        //[Required]
+        //[DataType(DataType.Password)]
+        //public string Password { get; set; }
 
         //User's Firstname. Can be private or null
         public string Firstname { get; set; }
@@ -41,6 +41,7 @@ namespace Discussme.DAL.Entities
         public string Info { get; set; }
 
         //Field that can to not allow user to some actions
+        [Required]
         public bool IsBanned { get; set; }
 
         //User's role
@@ -50,9 +51,11 @@ namespace Discussme.DAL.Entities
         public Privacy UserPrivacy { get; set; }
 
         //User's Registration date (don't even know, where am i need it)
+        [Required]
         public DateTime RegistrationTime { get; set; }
 
         //Time when user was last seen (will uses to identify online of user)
+        [Required]
         public DateTime LastSeenTime { get; set; }
 
         public virtual IdentityForumUser IdentityForumUser { get; set; }
