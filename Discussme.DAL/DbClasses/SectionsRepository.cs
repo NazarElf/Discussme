@@ -5,6 +5,7 @@ using System.Data.Entity;
 using Discussme.DAL.Interfaces;
 using Discussme.DAL.Entities;
 using Discussme.DAL.DbContextes;
+using System.Threading.Tasks;
 
 namespace Discussme.DAL.DbClasses
 {
@@ -14,18 +15,64 @@ namespace Discussme.DAL.DbClasses
 
         public SectionsRepository(DbContextes.MainContext db) => this.db = db;
 
-        public void Create(Section item) => db.Sections.Add(item);
+        public void Create(Section item)
+        {
+            db.Sections.Add(item);
+            db.SaveChanges();
+        }
 
-        public void Delete(Section item) => db.Sections.Remove(item);
+        public async Task CreateAsync(Section item)
+        {
+            await Task.Run(() => db.Sections.Add(item));
+            await db.SaveChangesAsync();
+        }
 
-        public void DeleteById(int id) => db.Sections.Remove(ReadItemById(id));
+        public void Delete(Section item)
+        {
+            db.Sections.Remove(item);
+            db.SaveChanges();
+        }
 
-        public IEnumerable<Section> FindAll(Func<Section, bool> predicate) => db.Sections.Where(predicate);
+        public async Task DeleteAsync(Section item)
+        {
+            await Task.Run(() => db.Sections.Remove(item));
+            await db.SaveChangesAsync();
+        }
 
-        public Section ReadItemById(int id) => db.Sections.Find(id);
+        public void DeleteById(int id)
+        {
+            db.Sections.Remove(ReadItemById(id));
+            db.SaveChanges();
+        }
 
-        public IEnumerable<Section> ReadList() => db.Sections;
+        public async Task DeleteByIdAsync(int id)
+        {
+            await Task.Run(async () => db.Sections.Remove(await ReadItemByIdAsync(id)));
+            await db.SaveChangesAsync();
+        }
 
-        public void Update(Section item) => db.Entry(item).State = EntityState.Modified;
+        public IEnumerable<Section> FindAll(Func<Section, bool> predicate) 
+            => db.Sections.Where(predicate);
+
+        public async Task<IEnumerable<Section>> FindAllAsync(Func<Section, bool> predicate)
+            => await Task.Run<IEnumerable<Section>>(() => db.Sections.Where(predicate));
+
+        public Section ReadItemById(int id) 
+            => db.Sections.Find(id);
+
+        public async Task<Section> ReadItemByIdAsync(int id)
+            => await Task.Run<Section>(() => db.Sections.Find(id));
+
+        public IEnumerable<Section> ReadList() 
+            => db.Sections;
+
+        public async Task<IEnumerable<Section>> ReadListAsync()
+            => await Task.Run<IEnumerable<Section>>(() => db.Sections);
+
+        public void Update(Section item) 
+            => db.Entry(item).State = EntityState.Modified;
+
+        public async Task UpdateAsync(Section item)
+            => await Task.Run(() => db.Entry(item).State = EntityState.Modified);
     }
 }
