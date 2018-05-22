@@ -12,11 +12,12 @@ using Discussme.DAL.DbClasses;
 using Discussme.DAL.Interfaces;
 using Discussme.DAL.Identity;
 using Microsoft.AspNet.Identity;
+using System.Data.Entity.Validation;
 
 namespace Discussme.BLL.ServiceClasses
 {
 
-    class ForumService : IForumService
+    public class ForumService : IForumService
     {
         IUnitOfWork db;
 
@@ -41,6 +42,7 @@ namespace Discussme.BLL.ServiceClasses
                 await db.UserManager.AddToRoleAsync(user.Id, userB.UserRole);
                 Mapper.Initialize(c => c.CreateMap<UserB, User>());
                 User profile = Mapper.Map<User>(userB);
+                Mapper.Reset();
                 profile.Id = user.Id;
                 db.ClientManager.Create(profile);
                 return new OperationDetails(true, "Registration complited", "");
@@ -137,10 +139,21 @@ namespace Discussme.BLL.ServiceClasses
 
         public IEnumerable<SectionB> GetAllSections()
         {
-            Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
-            var sections = Mapper.Map<IEnumerable<Section>, IEnumerable<SectionB>>(db.Sections.ReadList());
-            Mapper.Reset();
-            return sections;
+            try
+            {
+                Mapper.Initialize(c => c.CreateMap<Section, SectionB>());
+                var sections = Mapper.Map<IEnumerable<Section>, List<SectionB>>(db.Sections.ReadList());
+                Mapper.Reset();
+                return sections;
+            }
+            catch (DbEntityValidationException ex)
+            {
+                throw ex;
+            }
+            catch (Exception ex)
+            {
+                throw ex.InnerException.InnerException.InnerException;
+            }
         }
 
         public IEnumerable<CommentB> GetCommentsInTopic(int topicId)

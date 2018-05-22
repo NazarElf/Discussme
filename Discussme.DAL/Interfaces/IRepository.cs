@@ -3,23 +3,23 @@ using System.Collections.Generic;
 
 namespace Discussme.DAL.Interfaces
 {
-    public interface IRepository<T> where T : class
+    public interface IRepository<TEntity, TKey> where TEntity : class
     {
         //CRUD
 
         //Create
-        void Create(T item);
+        void Create(TEntity item);
 
         //Read
-        IEnumerable<T> ReadList();
-        IEnumerable<T> FindAll(Func<T, bool> predicate);
-        T ReadItemById(int id);
+        IEnumerable<TEntity> ReadList();
+        IEnumerable<TEntity> FindAll(Func<TEntity, bool> predicate);
+        TEntity ReadItemById(TKey id);
 
         //Update
-        void Update(T item);
+        void Update(TEntity item);
 
         //Delete
-        void DeleteById(int id);
-        void Delete(T item);
+        void DeleteById(TKey id);
+        void Delete(TEntity item);
     }
 }

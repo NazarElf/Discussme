@@ -17,10 +17,10 @@ namespace Discussme.DAL.Entities
         [Required]
         public string Nickname { get; set; }
 
-        //User's Email that connected with concreate user
-        [Required]
-        [DataType(DataType.EmailAddress)]
-        public string Email { get; set; }
+        //Don't need this anymore, because Identity already have it
+        //[Required]
+        //[DataType(DataType.EmailAddress)]
+        //public string Email { get; set; }
 
         //User's password
         [Required]

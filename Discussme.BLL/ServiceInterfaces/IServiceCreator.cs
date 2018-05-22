@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Discussme.BLL.ServiceInterfaces
 {
-    interface IServiceCreator
+    public interface IServiceCreator
     {
         IForumService CreateForumService(string connection);
         IForumService CreateForumService();

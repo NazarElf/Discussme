@@ -7,10 +7,10 @@ namespace Discussme.DAL.Interfaces
 {
     public interface IUnitOfWork : IDisposable
     {
-        IRepository<Comment> Comments { get; }
-        IRepository<Section> Sections { get; }
-        IRepository<Topic> Topics { get; }
-        IRepository<User> Users { get; }
+        IRepository<Comment, int> Comments { get; }
+        IRepository<Section, int> Sections { get; }
+        IRepository<Topic, int> Topics { get; }
+        IRepository<User, string> Users { get; }
 
         IClientManager ClientManager { get; }
         ForumRoleManager RoleManager { get; }

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace Discussme.BLL.ServiceClasses
 {
-    class ServiceCreator : IServiceCreator
+    public class ServiceCreator : IServiceCreator
     {
         public IForumService CreateForumService(string connection)
         {

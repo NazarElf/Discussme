@@ -8,7 +8,7 @@ using Discussme.DAL.DbContextes;
 
 namespace Discussme.DAL.DbClasses
 {
-    public class SectionsRepository : IRepository<Section>
+    public class SectionsRepository : IRepository<Section, int>
     {
         DbContextes.MainContext db;
 

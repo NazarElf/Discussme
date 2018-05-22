@@ -7,10 +7,13 @@ namespace Discussme.DAL.Entities
     public class Section
     {
         //Uniq identificator of section
+        [Key]
         public int Id { get; set; }
+
         //Name(or title) of section
         [Required]
         public string Title { get; set; }
+
         //Description of section (Header)
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }

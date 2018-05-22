@@ -6,8 +6,8 @@ using System.Security.Claims;
 
 namespace Discussme.BLL.ServiceInterfaces
 {
-    //Service for interaction with db objects that isn't user
-    interface IForumService : IDisposable
+    //Service for interaction with db objects
+    public interface IForumService : IDisposable
     {
         Task<OperationDetails> Create(UserB user);
         Task<ClaimsIdentity> Authenticate(UserB user);

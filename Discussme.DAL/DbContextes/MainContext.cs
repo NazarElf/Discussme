@@ -2,6 +2,7 @@
 using Discussme.DAL.Entities;
 using System;
 using Microsoft.AspNet.Identity.EntityFramework;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Discussme.DAL.DbContextes
 {
@@ -15,7 +16,14 @@ namespace Discussme.DAL.DbContextes
         public DbSet<Comment> Comments { get; set; }
         public DbSet<Section> Sections { get; set; }
         public DbSet<Topic> Topics { get; set; }
-        public DbSet<User> Users { get; set; }
+        public DbSet<User> MyUsers { get; set; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //modelBuilder.Entity<Section>().Property(s => s.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.None);
+            //modelBuilder.Entity<Topic>().Property(t => t.Id).HasDatabaseGeneratedOption(DatabaseGeneratedOption.Identity);
+            base.OnModelCreating(modelBuilder);
+        }
     }
 
     class MainContextInitializer : DropCreateDatabaseAlways<MainContext>
@@ -56,16 +64,17 @@ namespace Discussme.DAL.DbContextes
                 SectionId = 3
             };
 
+
             context.Sections.Add(sect0);
             context.Sections.Add(sect1);
             context.Sections.Add(sect2);
-
 
             context.Topics.Add(topic0);
             context.Topics.Add(topic1);
             context.Topics.Add(topic2);
             context.Topics.Add(topic3);
             context.Topics.Add(topic4);
+
             context.SaveChanges();
         }
     }

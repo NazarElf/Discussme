@@ -38,7 +38,7 @@ namespace Discussme.DAL.DbClasses
             clientManager = new ClientManager(db);
         }
 
-        public IRepository<Comment> Comments
+        public IRepository<Comment, int> Comments
         {
             get
             {
@@ -48,7 +48,7 @@ namespace Discussme.DAL.DbClasses
             }
         }
 
-        public IRepository<Section> Sections
+        public IRepository<Section, int> Sections
         {
             get
             {
@@ -58,7 +58,7 @@ namespace Discussme.DAL.DbClasses
             }
         }
 
-        public IRepository<Topic> Topics
+        public IRepository<Topic, int> Topics
         {
             get
             {
@@ -68,7 +68,7 @@ namespace Discussme.DAL.DbClasses
             }
         }
 
-        public IRepository<User> Users
+        public IRepository<User, string> Users
         {
             get
             {

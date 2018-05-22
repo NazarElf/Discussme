@@ -8,13 +8,17 @@ namespace Discussme.DAL.Entities
     public class Topic
     {
         //Uniq dentificator of Topic
+        [Key]
         public int Id { get; set; }
+
         //Title (or name) of topic
         [Required]
         public string Title { get; set; }
+
         //Body of topic (have all text)
         [DataType(DataType.MultilineText)]
         public string Description { get; set; }
+
         //Time of creation of topic (will be sorted by this field)
         public DateTime CreationTime { get; set; }
         

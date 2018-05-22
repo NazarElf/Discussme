@@ -16,7 +16,7 @@ namespace Discussme.DAL.DbClasses
 
         public void Create(User item)
         {
-            db.Users.Add(item);
+            db.MyUsers.Add(item);
             db.SaveChanges();
         }
 

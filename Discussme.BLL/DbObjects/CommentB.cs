@@ -8,7 +8,7 @@ using System.Runtime.Serialization;
 namespace Discussme.BLL.DbObjects
 {
     // B means Business logic's object
-    class CommentB
+    public class CommentB
     {
         public int Id { get; set; }
         public string Description { get; set; }

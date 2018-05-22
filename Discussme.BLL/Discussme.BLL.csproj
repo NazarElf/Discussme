@@ -58,7 +58,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DbObjects\CommentB.cs" />
-    <Compile Include="DbObjects\LoginData.cs" />
     <Compile Include="DbObjects\OperationDetails.cs" />
     <Compile Include="DbObjects\SectionB.cs" />
     <Compile Include="DbObjects\TopicB.cs" />
