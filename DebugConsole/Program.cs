@@ -14,7 +14,12 @@ namespace ProgramDebugConsole
     {
         static void Main(string[] args)
         {
-         //   DisplayResultAsync();
+            ForumService fs = new ForumService();
+            var t = fs.GetTopicsInSection(2);
+            foreach (var item in t)
+            {
+                Console.WriteLine(item.Title);
+            }
             Console.ReadLine();
         }
         

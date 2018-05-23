@@ -27,7 +27,19 @@ namespace Discussme.PL.Controllers
             List<SectionsModel> list = new List<SectionsModel>();
             foreach (var item in listOfSections)
             {
-                list.Add(new SectionsModel { SectionName = item.Title });
+                list.Add(new SectionsModel { SectionName = item.Title, SectionDescription = item.Description, Id = item.Id });
+            }
+            return View(list);
+        }
+
+        public ActionResult Details(SectionsModel model)
+        { 
+            //
+            var listOfTopicsInSection = ForumService.GetTopicsInSection(model.Id);
+            List<TopicModel> list = new List<TopicModel>();
+            foreach (var item in listOfTopicsInSection)
+            {
+                list.Add(new TopicModel { CreationTime = item.CreationTime, Description = item.Description, Title = item.Title });
             }
             return View(list);
         }
